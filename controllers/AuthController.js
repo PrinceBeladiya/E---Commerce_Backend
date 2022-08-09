@@ -27,7 +27,7 @@ recordRoutes.post('/insertUser', async (req, res) => {
             res.status(400).send('Error inserting User!');
           } else {
             console.log(`Added a new match with id ${result.insertedId}`);
-            res.status(204).send();
+            res.json(matchUser);
           }
         });
     } else {
@@ -52,7 +52,7 @@ recordRoutes.post('/authUser', async (req, res) => {
 
       if (String(Password) === String(req.body.password)) {
         console.log('Authentication Successfull');
-        res.status(204).send();
+        res.json(userExist);
       } else {
         res.status(400).send('Incorrect Credentials');
       }
@@ -87,7 +87,7 @@ recordRoutes.post('/updateUser', async (req, res) => {
           res.status(400).send(`Error updating user on listing with id ${userExist.id}!`);
         } else {
           console.log('1 user updated successfully');
-          res.status(204).send();
+          res.json(updation);
         }
       });
     } else {
@@ -111,7 +111,7 @@ recordRoutes.delete('/deleteUser', async (req, res) => {
           res.status(400).send(`Error deleting user with id ${userExist.id}!`);
         } else {
           console.log('1 user deleted successfully');
-          res.status(204).send();
+          res.json(userExist);
         }
       });
     }
